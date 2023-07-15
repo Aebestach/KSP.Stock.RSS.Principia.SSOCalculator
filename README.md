@@ -1,10 +1,5 @@
 # KSPStock_RSSPrincipiaSSOCalculator
 
-Adding J2 perturbation to the stock planets of the Kerbal Space Program provides aids for proper entry into sun-synchronous orbit.
+为坎巴拉太空计划原版星球添加J2摄动提供辅助工具，同时可以计算SSO的相关参数。（本工具也支持真实太阳系）
 
-Thanks to @Nazfib for the source code. I have modified and packaged it based on this.
-
-
-为坎巴拉太空计划的原版星球添加J2摄动提供辅助工具，以便正确进入太阳同步轨道。
-
-感谢@Nazfib的源代码。本人在此基础上对其进行修改打包。
+感谢@Nazfib提供的计算倾角公式的代码支持。
