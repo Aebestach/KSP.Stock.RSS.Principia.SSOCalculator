@@ -1,4 +1,5 @@
-# KSPStockPlanetPrincipiaSSO
+# KSPStock_RSSPrincipiaSSOCalculator
+
 Adding J2 perturbation to the stock planets of the Kerbal Space Program provides aids for proper entry into sun-synchronous orbit.
 
 Thanks to @Nazfib for the source code. I have modified and packaged it based on this.
