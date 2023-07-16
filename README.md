@@ -37,7 +37,7 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 
 
 ## Warning
-1. This tool does not take into account whether the orbit composed of the inclination and eccentricity you entered is below a safe value, and you need to verify it in the game.
+1. This tool does not take into account whether the orbit composed of the altitude and eccentricity you entered is below a safe value, and you need to verify it in the game.
 
 
 ## Credits
