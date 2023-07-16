@@ -34,8 +34,7 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 
 ## To-Do List
 
-1. Some planets `SiderealOrbitalPeriod` in `PlanetData\RSSPlanetData.cfg` are incomplete and need to be fixed.
-2. Considering adding a button, the purpose of this button is to append the content of the generated configuration. (To be determined)
+1. Considering adding a button, the purpose of this button is to append the content of the generated configuration.
 
 
 ## Warning
