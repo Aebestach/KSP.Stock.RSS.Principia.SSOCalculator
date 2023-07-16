@@ -1,4 +1,4 @@
-# KSP.Stock.RSS.Principia.SSOCalculator
+# SSOCalculator.Stock_RSS_Principia
 
 <div align=center> <img src="https://imgur.com/Kp0oF8q.jpg"><p>Initial Page</p></div>
 
