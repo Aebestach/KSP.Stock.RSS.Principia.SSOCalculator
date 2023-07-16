@@ -1,7 +1,7 @@
 # SSOCalculator.Stock_RSS_Principia
 
 
-[English](https://github.com/Aebestach/SSOCalculator.Stock_RSS_Principia/blob/main/README.md) | [简体中文](https://www.bilibili.com/read/preview/25055752)
+[English](https://github.com/Aebestach/SSOCalculator.Stock_RSS_Principia/blob/main/README.md) | [简体中文]([https://www.bilibili.com/read/preview/25055752](https://www.bilibili.com/read/cv25055752))
 <div align=center> <img src="https://imgur.com/Kp0oF8q.jpg"><p>Initial Page</p></div>
 
 
