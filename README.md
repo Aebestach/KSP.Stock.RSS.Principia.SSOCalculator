@@ -29,7 +29,7 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 <div align=center><img src="https://imgur.com/1A2FlWn.jpg"><p>Configuration generation successful case</p></div>
 <div align=center><img src="https://imgur.com/4LWTmG9.jpg"><p>GameData content</p></div>
 
-5. The clear button is for one-click clearing of the `Altitude(m)`, `Eccentricity`, and `j2` parameters.
+5. The **Clear** button is for one-click clearing of the `Altitude(m)`, `Eccentricity`, and `j2` parameters.
 
 
 ## To-Do List
