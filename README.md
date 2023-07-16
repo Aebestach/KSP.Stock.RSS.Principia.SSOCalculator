@@ -1,4 +1,4 @@
-# KSPStock_RSSPrincipiaSSOCalculator
+# KSP.Stock.RSS.Principia.SSOCalculator
 
 This tool can generate configuration file of Principia, so as to add the second-order spherical harmonic coefficient j2 to the stock planet to help players successfully enter the sun-synchronous orbit of the stock planet. At the same time, this tool also supports the calculation of relevant parameters of the sun-synchronous orbit in the RealSolarSystem environment. 
 
