@@ -42,5 +42,5 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 
 ## Credits
 @SirMortimer -Kopernicus configuration file.
-@Nazfib -Code help for calculating sun-synchronous orbit inclination and other formulas.
-@Charon_S丶-Chinese KSP players have provided help for adding second-order spherical harmonic coefficient terms.
+<br>@Nazfib -Code help for calculating sun-synchronous orbit inclination and other formulas.
+<br>@Charon_S丶-Chinese KSP players have provided help for adding second-order spherical harmonic coefficient terms.
