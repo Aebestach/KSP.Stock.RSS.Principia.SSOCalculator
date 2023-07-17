@@ -24,31 +24,31 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.panel = wx.Panel(self)
         vbox = wx.BoxSizer(wx.VERTICAL)
 
-        # # Set the language based on the system language
-        # system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
-        # print(system_language)
-        # if system_language == "zh_CN":
-        #     current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
-        # else:
-        #     current_language = wx.LANGUAGE_ENGLISH
-        #
-        # self.locale = wx.Locale(current_language)
-        # self.locale.AddCatalogLookupPathPrefix('language')
-        #
-        # if current_language == wx.LANGUAGE_ENGLISH:
-        #     self.locale.AddCatalog('en')
-        # elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
-        #     self.locale.AddCatalog('zh_CN')
+        # Set the language based on the system language
+        system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
+        print(system_language)
+        if system_language == "zh_CN":
+            current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        else:
+            current_language = wx.LANGUAGE_ENGLISH
 
-        current_language = wx.LANGUAGE_ENGLISH
         self.locale = wx.Locale(current_language)
         self.locale.AddCatalogLookupPathPrefix('language')
-        self.locale.AddCatalog('en')
 
-        # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        if current_language == wx.LANGUAGE_ENGLISH:
+            self.locale.AddCatalog('en')
+        elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
+            self.locale.AddCatalog('zh_CN')
+
+        # current_language = wx.LANGUAGE_ENGLISH
         # self.locale = wx.Locale(current_language)
         # self.locale.AddCatalogLookupPathPrefix('language')
-        # self.locale.AddCatalog('zh_CN')
+        # self.locale.AddCatalog('en')
+        #
+        # # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        # # self.locale = wx.Locale(current_language)
+        # # self.locale.AddCatalogLookupPathPrefix('language')
+        # # self.locale.AddCatalog('zh_CN')
 
 
         # # Create a language selection menu
