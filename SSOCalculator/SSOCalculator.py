@@ -12,96 +12,96 @@ current_language = wx.LANGUAGE_ENGLISH
 
 
 class SunSyncOrbitCalculator(wx.Frame):
-    def __init__(self, parent, title):
-        super(SunSyncOrbitCalculator, self).__init__(parent, title=title, size=(455, 550),style=wx.DEFAULT_FRAME_STYLE ^ wx.MAXIMIZE_BOX)
-        self.SetMaxSize((455, 550))
-        self.SetMinSize((455, 550))
+    def __init__(self, parent):
+        super(SunSyncOrbitCalculator, self).__init__(parent, size=(470, 750),style=wx.DEFAULT_FRAME_STYLE ^ wx.MAXIMIZE_BOX)
+        self.SetMaxSize((470, 750))
+        self.SetMinSize((470, 750))
+        self.SetTitle(_('Sun Synchronous Orbit Calculator'))
 
         self.InitUI()
         self.Centre()
 
     def InitUI(self):
         self.panel = wx.Panel(self)
-        vbox = wx.BoxSizer(wx.VERTICAL)
 
-        # Set the language based on the system language
-        system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
-        print(system_language)
-        if system_language == "zh_CN":
-            current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
-        else:
-            current_language = wx.LANGUAGE_ENGLISH
-
-        self.locale = wx.Locale(current_language)
-        self.locale.AddCatalogLookupPathPrefix('language')
-
-        if current_language == wx.LANGUAGE_ENGLISH:
-            self.locale.AddCatalog('en')
-        elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
-            self.locale.AddCatalog('zh_CN')
+        # # Set the language based on the system language
+        # system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
+        # if system_language == "zh_CN":
+        #     current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        # else:
+        #     current_language = wx.LANGUAGE_ENGLISH
+        #
+        # self.locale = wx.Locale(current_language)
+        # self.locale.AddCatalogLookupPathPrefix('language')
+        #
+        # if current_language == wx.LANGUAGE_ENGLISH:
+        #     self.locale.AddCatalog('en')
+        # elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
+        #     self.locale.AddCatalog('zh_CN')
 
         # current_language = wx.LANGUAGE_ENGLISH
         # self.locale = wx.Locale(current_language)
         # self.locale.AddCatalogLookupPathPrefix('language')
         # self.locale.AddCatalog('en')
         #
-        # # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
-        # # self.locale = wx.Locale(current_language)
-        # # self.locale.AddCatalogLookupPathPrefix('language')
-        # # self.locale.AddCatalog('zh_CN')
-
-
-        # # Create a language selection menu
-        # languages = [wx.LANGUAGE_ENGLISH, wx.LANGUAGE_CHINESE_SIMPLIFIED]
-        # languageChoices = [wx.Locale.GetLanguageName(lang) for lang in languages]
-
-        sizer = wx.GridBagSizer(10, 5)
-
-        # sizer.Add(wx.StaticText(self.panel, label="Language"), pos=(0, 0), span=(1, 1),flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-        # self.languageChoice = wx.Choice(self.panel, choices=languageChoices)
-        # self.languageChoice.Bind(wx.EVT_CHOICE, self.OnLanguageChoice)
-        # sizer.Add(self.languageChoice, pos=(0, 1), span=(1, 4), flag=wx.EXPAND)
+        # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        # self.locale = wx.Locale(current_language)
+        # self.locale.AddCatalogLookupPathPrefix('language')
+        # self.locale.AddCatalog('zh_CN')
 
         # Add two choice controls before the input label
         choice1Items = ["Stock", "RealSolarSystem"]
         self.choice2Items = ReadFile.ReadPlanetName()
-        # self.choice2Items = {
-        #     "Stock": ['Kerbin', 'Eve', 'Moho', 'Duna', 'Jool', 'Dres', 'Eeloo', 'Gilly', 'Mun', 'Minmus', 'Ike', 'Laythe', 'Vall', 'Tylo', 'Bop', 'Pol'],
-        #     "RealSolarSystem": ['Jupiter', 'Saturn', 'Neptune', 'Uranus', 'Earth', 'Venus', 'Mars', 'Mercury', 'Ganymede', 'Titan', 'Callisto', 'Io', 'Moon', 'Europa', 'Triton', 'Eris', 'Pluto', 'Titania', 'Oberon', 'Rhea', 'Iapetus', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Ceres', 'Tethys', 'Vesta', 'Enceladus', 'Miranda', 'Mimas', 'Phobos', 'Deimos'],
-        # }
+
+
+
+        sizer = wx.GridBagSizer(10, 10)
+        font = wx.Font(18, wx.MODERN, wx.NORMAL, wx.NORMAL, False, 'Consolas')
+        self.title = wx.StaticText(self.panel, label=_("\nSun Synchronous Orbit Calculator\n"))
+        self.title.SetFont(font)
+        sizer.Add(self.title, pos=(0, 0), span=(1, 7), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
 
 
         self.inputL1 = wx.StaticText(self.panel, label=_("System"))
-        sizer.Add(self.inputL1, pos=(0, 0), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.inputL1, pos=(1, 1), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.choice1 = wx.Choice(self.panel, choices=choice1Items)
         self.choice1.SetMinSize((150, -1))
         self.choice1.Bind(wx.EVT_CHOICE, self.UpdateChoice2)
-        sizer.Add(self.choice1, pos=(0, 1), span=(1, 1), flag=wx.RIGHT)
+        sizer.Add(self.choice1, pos=(1, 3), span=(1, 1), flag=wx.LEFT)
 
         self.inputL2 = wx.StaticText(self.panel, label=_("Planet"))
-        sizer.Add(self.inputL2, pos=(0, 2), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.inputL2, pos=(2, 1), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.choice2 = wx.Choice(self.panel, choices=self.choice2Items[choice1Items[0]])
-        self.choice2.SetMinSize((120, -1))
-        sizer.Add(self.choice2, pos=(0, 3), span=(1, 1), flag=wx.RIGHT)
+        self.choice2.SetMinSize((150, -1))
+        sizer.Add(self.choice2, pos=(2, 3), span=(1, 1), flag=wx.LEFT)
         self.choice2.Enable(False)
 
-        self.inputLabel = wx.StaticText(self.panel,label=_("----------------Please Enter Orbit Parameters----------------"))
-        sizer.Add(self.inputLabel, pos=(1, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
 
-        self.input1Label = wx.StaticText(self.panel, label=_("Altitude(m)"))
-        sizer.Add(self.input1Label, pos=(3, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-        self.input1 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input1, pos=(3, 2), span=(1, 2), flag=wx.EXPAND)
+
+        self.inputLabel = wx.StaticText(self.panel,label=_("-----------------Please Enter Orbit Parameters----------------"))
+        sizer.Add(self.inputLabel, pos=(4, 0), span=(2, 6), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+
+        self.input1Label = wx.StaticText(self.panel, label=_("Altitude"))
+        sizer.Add(self.input1Label, pos=(6, 1), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        self.input1 = wx.TextCtrl(self.panel,size=(150, -1))
+        sizer.Add(self.input1, pos=(6, 3))
+
+        # Add a drop-down selection box with the options "m" and "km"
+        self.choiceUnit = wx.Choice(self.panel, choices=["m", "km"],size=(50, -1))
+        sizer.Add(self.choiceUnit, pos=(6, 4) , flag=wx.LEFT)
+        #self.choice.SetSelection(0)
+
 
         self.input2Label = wx.StaticText(self.panel, label=_("Eccentricity"))
-        sizer.Add(self.input2Label, pos=(4, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-        self.input2 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input2, pos=(4, 2), span=(1, 2), flag=wx.EXPAND)
+        sizer.Add(self.input2Label, pos=(7, 1), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        self.input2 = wx.TextCtrl(self.panel,size=(150, -1))
+        sizer.Add(self.input2, pos=(7, 3), span=(1, 2))
 
         self.input3Label = wx.StaticText(self.panel, label=_("j2"))
-        sizer.Add(self.input3Label, pos=(5, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-        self.input3 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input3, pos=(5, 2), span=(1, 2), flag=wx.EXPAND)
+        sizer.Add(self.input3Label, pos=(8, 1), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        self.input3 = wx.TextCtrl(self.panel,size=(150, -1))
+        sizer.Add(self.input3, pos=(8, 3), span=(1, 2))
+
 
         hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.calcButton = wx.Button(self.panel, label=_("Calculate"))
@@ -117,38 +117,26 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.ClearButton.Bind(wx.EVT_BUTTON, self.OnClearButtonClicked)
         hbox.Add(self.ClearButton, flag=wx.RIGHT)
         self.ClearButton.Enable(False)
-
-
-        sizer.Add(hbox, pos=(6, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(hbox, pos=(10, 0), span=(2, 6), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.GenerateButton.Enable(False)
 
 
         self.outputLabel = wx.StaticText(self.panel, label=_("Calculation Result"))
-        sizer.Add(self.outputLabel, pos=(8, 0), span=(1, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-
+        sizer.Add(self.outputLabel, pos=(12, 0), span=(1, 6), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.outputText = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE)
-        sizer.Add(self.outputText, pos=(9, 0), span=(10, 4), flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP)
+        sizer.Add(self.outputText, pos=(13, 0), span=(10, 7), flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP)
+
 
         self.UpdateUI()
-        self.panel.SetSizer(sizer)  # Set the sizer to the panel
+        self.panel.SetSizer(sizer) # Set the sizer to the panel
 
-    # def OnLanguageChoice(self, e):
-    #     system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
-    #     if system_language == "zh_CN":
-    #         self.languageChoice.SetSelection(1)
-    #         self.OnLanguageChoice(None)
-    #     else:
-    #         self.languageChoice.SetSelection(0)
-    #         self.OnLanguageChoice(None)
-    #
-    #     self.UpdateUI()
 
     def UpdateUI(self):
 
         self.inputL1.SetLabel(_("System"))
         self.inputL2.SetLabel(_("Planet"))
-        self.inputLabel.SetLabel(_("----------------Please Enter Orbit Parameters----------------"))
-        self.input1Label.SetLabel(_("Altitude(m)"))
+        self.inputLabel.SetLabel(_("-----------------Please Enter Orbit Parameters----------------"))
+        self.input1Label.SetLabel(_("Altitude"))
         self.input2Label.SetLabel(_("Eccentricity"))
         self.input3Label.SetLabel(_("j2"))
         self.calcButton.SetLabel(_("Calculate"))
@@ -170,28 +158,43 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.GenerateButton.Enable(False)
 
 
-        # Display calculation results
-        if choice1Selection == 'RealSolarSystem':
-            # Call the sun synchronous orbit calculation program
-            result1, result2, result3, result4 = Counter.calculate_sun_sync_orbit(choice1Selection, choice2Selection, input1, input2, input3)
-
-            if math.isnan(float(result2)):
-                self.outputText.AppendText(_('Input error, please re-enter!') + '\n\n')
-                self.ClearButton.Enable(True)
-            else:
-                self.outputText.AppendText("--------------Satellite Orbital Parameters--------------" + '\n' + "Planet:" + '\t\t' + str(result1) + '\n' + "Altitude:" + '\t\t' + input1 + ' m\n' + "Inclination:" + '\t' + str(result2) + ' °\n' + "SMA:" + '\t\t' + str(result3) + ' m\n' + "Eccentricity:" + '\t' +str(result4) + '\n\n')
-                self.ClearButton.Enable(True)
+        if self.choiceUnit.GetStringSelection()=='m':
+            flag=0
+        elif self.choiceUnit.GetStringSelection()=='km':
+            flag=1
         else:
-            # Call the sun synchronous orbit calculation program
-            result1, result2, result3, result4, result5 = Counter.calculate_sun_sync_orbit(choice1Selection, choice2Selection, input1, input2, input3)
+            flag=-1
+        print(flag)
 
-            if math.isnan(float(result2)):
-                self.outputText.AppendText(_('Input error, please re-enter!') + '\n\n')
-                self.ClearButton.Enable(True)
+
+        if (flag==-1):
+            self.outputText.AppendText(_('Input error, please re-enter!') + '\n\n')
+            self.ClearButton.Enable(True)
+        else:
+            if flag==1:
+                input1=str(float(input1)*100)
+            # Display calculation results
+            if choice1Selection == 'RealSolarSystem':
+                # Call the sun synchronous orbit calculation program
+                result1, result2, result3, result4 = Counter.calculate_sun_sync_orbit(choice1Selection, choice2Selection, input1, input2, input3)
+
+                if math.isnan(float(result2)):
+                    self.outputText.AppendText(_('Input error, please re-enter!') + '\n\n')
+                    self.ClearButton.Enable(True)
+                else:
+                    self.outputText.AppendText("--------------Satellite Orbital Parameters--------------" + '\n' + "Planet:" + '\t\t' + str(result1) + '\n' + "Altitude:" + '\t\t' + input1 + ' m\n' + "Inclination:" + '\t' + str(result2) + ' °\n' + "SMA:" + '\t\t' + str(result3) + ' m\n' + "Eccentricity:" + '\t' +str(result4) + '\n\n')
+                    self.ClearButton.Enable(True)
             else:
-                self.GenerateButton.Enable(True)
-                self.choice2.Enable(False)
-                self.outputText.AppendText("--------------Satellite Orbital Parameters--------------" + '\n' + "Planet:" + '\t\t' + str(result1) + '\n' + "Altitude:" + '\t\t' + input1 + ' m\n' + "Inclination:" + '\t' + str(result2) + ' °\n' + "SMA:" + '\t\t' + str(result3) + ' m\n' + "Eccentricity:" + '\t' +str(result4) + '\n' + "C(2,0)(cos):" + '\t' + str(result5) + '\n\n')
+                # Call the sun synchronous orbit calculation program
+                result1, result2, result3, result4, result5 = Counter.calculate_sun_sync_orbit(choice1Selection, choice2Selection, input1, input2, input3)
+
+                if math.isnan(float(result2)):
+                    self.outputText.AppendText(_('Input error, please re-enter!') + '\n\n')
+                    self.ClearButton.Enable(True)
+                else:
+                    self.GenerateButton.Enable(True)
+                    self.choice2.Enable(False)
+                    self.outputText.AppendText("--------------Satellite Orbital Parameters--------------" + '\n' + "Planet:" + '\t\t' + str(result1) + '\n' + "Altitude:" + '\t\t' + input1 + ' m\n' + "Inclination:" + '\t' + str(result2) + ' °\n' + "SMA:" + '\t\t' + str(result3) + ' m\n' + "Eccentricity:" + '\t' +str(result4) + '\n' + "C(2,0)(cos):" + '\t' + str(result5) + '\n\n')
 
 
     def OnGenerateButtonClicked(self, e):
@@ -221,11 +224,11 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.input1.SetLabel('')
         self.input2.SetLabel('')
         self.input3.SetLabel('')
+        self.choiceUnit.SetSelection(-1)
         self.ClearButton.Enable(False)
 
 
 if __name__ == '__main__':
     app = wx.App()
-
-    SunSyncOrbitCalculator(None, title='Sun Synchronous Orbit Calculator').Show()
+    SunSyncOrbitCalculator(None).Show()
     app.MainLoop()

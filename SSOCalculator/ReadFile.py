@@ -61,3 +61,8 @@ def ReadPlanetName():
     'RealSolarSystem': real_solar_system_names}
 
     return choice2Items
+
+# self.choice2Items = {
+#     "Stock": ['Kerbin', 'Eve', 'Moho', 'Duna', 'Jool', 'Dres', 'Eeloo', 'Gilly', 'Mun', 'Minmus', 'Ike', 'Laythe', 'Vall', 'Tylo', 'Bop', 'Pol'],
+#     "RealSolarSystem": ['Jupiter', 'Saturn', 'Neptune', 'Uranus', 'Earth', 'Venus', 'Mars', 'Mercury', 'Ganymede', 'Titan', 'Callisto', 'Io', 'Moon', 'Europa', 'Triton', 'Eris', 'Pluto', 'Titania', 'Oberon', 'Rhea', 'Iapetus', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Ceres', 'Tethys', 'Vesta', 'Enceladus', 'Miranda', 'Mimas', 'Phobos', 'Deimos'],
+# }
