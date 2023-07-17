@@ -7,16 +7,13 @@ import math
 # Define a global variable to store the current language setting
 _ = wx.GetTranslation
 
-# Define a global variable to store the current language setting
-current_language = wx.LANGUAGE_ENGLISH
-
 
 class SunSyncOrbitCalculator(wx.Frame):
     def __init__(self, parent):
         super(SunSyncOrbitCalculator, self).__init__(parent, size=(470, 750),style=wx.DEFAULT_FRAME_STYLE ^ wx.MAXIMIZE_BOX)
         self.SetMaxSize((470, 750))
         self.SetMinSize((470, 750))
-        self.SetTitle(_('Sun Synchronous Orbit Calculator'))
+        self.SetTitle('Sun Synchronous Orbit Calculator')
 
         self.InitUI()
         self.Centre()
@@ -24,30 +21,22 @@ class SunSyncOrbitCalculator(wx.Frame):
     def InitUI(self):
         self.panel = wx.Panel(self)
 
-        # # Set the language based on the system language
-        # system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
-        # if system_language == "zh_CN":
-        #     current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
-        # else:
-        #     current_language = wx.LANGUAGE_ENGLISH
-        #
-        # self.locale = wx.Locale(current_language)
-        # self.locale.AddCatalogLookupPathPrefix('language')
-        #
-        # if current_language == wx.LANGUAGE_ENGLISH:
-        #     self.locale.AddCatalog('en')
-        # elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
-        #     self.locale.AddCatalog('zh_CN')
+        # Set the language based on the system language
+        system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
+        if system_language == "zh_CN":
+            current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        else:
+            current_language = wx.LANGUAGE_ENGLISH
 
-        # current_language = wx.LANGUAGE_ENGLISH
-        # self.locale = wx.Locale(current_language)
-        # self.locale.AddCatalogLookupPathPrefix('language')
-        # self.locale.AddCatalog('en')
-        #
-        # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
-        # self.locale = wx.Locale(current_language)
-        # self.locale.AddCatalogLookupPathPrefix('language')
-        # self.locale.AddCatalog('zh_CN')
+        self.locale = wx.Locale(current_language)
+        self.locale.AddCatalogLookupPathPrefix('language')
+
+        if current_language == wx.LANGUAGE_ENGLISH:
+            self.locale.AddCatalog('en')
+        elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
+            self.locale.AddCatalog('zh_CN')
+
+
 
         # Add two choice controls before the input label
         choice1Items = ["Stock", "RealSolarSystem"]
@@ -56,7 +45,7 @@ class SunSyncOrbitCalculator(wx.Frame):
 
 
         sizer = wx.GridBagSizer(10, 10)
-        font = wx.Font(18, wx.MODERN, wx.NORMAL, wx.NORMAL, False, 'Consolas')
+        font = wx.Font(18, wx.MODERN, wx.NORMAL, wx.BOLD, False, 'Microsoft YaHei')
         self.title = wx.StaticText(self.panel, label=_("\nSun Synchronous Orbit Calculator\n"))
         self.title.SetFont(font)
         sizer.Add(self.title, pos=(0, 0), span=(1, 7), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
@@ -133,6 +122,7 @@ class SunSyncOrbitCalculator(wx.Frame):
 
     def UpdateUI(self):
 
+        self.title.SetLabel(_("\nSun Synchronous Orbit Calculator\n"))
         self.inputL1.SetLabel(_("System"))
         self.inputL2.SetLabel(_("Planet"))
         self.inputLabel.SetLabel(_("-----------------Please Enter Orbit Parameters----------------"))
@@ -156,7 +146,6 @@ class SunSyncOrbitCalculator(wx.Frame):
         choice2Selection = self.choice2.GetStringSelection()
 
         self.GenerateButton.Enable(False)
-
 
         if self.choiceUnit.GetStringSelection()=='m':
             flag=0
