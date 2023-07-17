@@ -24,16 +24,43 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.panel = wx.Panel(self)
         vbox = wx.BoxSizer(wx.VERTICAL)
 
-        # Create a language selection menu
-        languages = [wx.LANGUAGE_ENGLISH, wx.LANGUAGE_CHINESE_SIMPLIFIED]
-        languageChoices = [wx.Locale.GetLanguageName(lang) for lang in languages]
+        # # Set the language based on the system language
+        # system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
+        # print(system_language)
+        # if system_language == "zh_CN":
+        #     current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        # else:
+        #     current_language = wx.LANGUAGE_ENGLISH
+        #
+        # self.locale = wx.Locale(current_language)
+        # self.locale.AddCatalogLookupPathPrefix('language')
+        #
+        # if current_language == wx.LANGUAGE_ENGLISH:
+        #     self.locale.AddCatalog('en')
+        # elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
+        #     self.locale.AddCatalog('zh_CN')
+
+        current_language = wx.LANGUAGE_ENGLISH
+        self.locale = wx.Locale(current_language)
+        self.locale.AddCatalogLookupPathPrefix('language')
+        self.locale.AddCatalog('en')
+
+        # current_language = wx.LANGUAGE_CHINESE_SIMPLIFIED
+        # self.locale = wx.Locale(current_language)
+        # self.locale.AddCatalogLookupPathPrefix('language')
+        # self.locale.AddCatalog('zh_CN')
+
+
+        # # Create a language selection menu
+        # languages = [wx.LANGUAGE_ENGLISH, wx.LANGUAGE_CHINESE_SIMPLIFIED]
+        # languageChoices = [wx.Locale.GetLanguageName(lang) for lang in languages]
 
         sizer = wx.GridBagSizer(10, 5)
 
-        sizer.Add(wx.StaticText(self.panel, label="Language"), pos=(0, 0), span=(1, 1),flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
-        self.languageChoice = wx.Choice(self.panel, choices=languageChoices)
-        self.languageChoice.Bind(wx.EVT_CHOICE, self.OnLanguageChoice)
-        sizer.Add(self.languageChoice, pos=(0, 1), span=(1, 4), flag=wx.EXPAND)
+        # sizer.Add(wx.StaticText(self.panel, label="Language"), pos=(0, 0), span=(1, 1),flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        # self.languageChoice = wx.Choice(self.panel, choices=languageChoices)
+        # self.languageChoice.Bind(wx.EVT_CHOICE, self.OnLanguageChoice)
+        # sizer.Add(self.languageChoice, pos=(0, 1), span=(1, 4), flag=wx.EXPAND)
 
         # Add two choice controls before the input label
         choice1Items = ["Stock", "RealSolarSystem"]
@@ -45,34 +72,36 @@ class SunSyncOrbitCalculator(wx.Frame):
 
 
         self.inputL1 = wx.StaticText(self.panel, label=_("System"))
-        sizer.Add(self.inputL1, pos=(1, 0), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.inputL1, pos=(0, 0), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.choice1 = wx.Choice(self.panel, choices=choice1Items)
+        self.choice1.SetMinSize((150, -1))
         self.choice1.Bind(wx.EVT_CHOICE, self.UpdateChoice2)
-        sizer.Add(self.choice1, pos=(1, 1), span=(1, 1), flag=wx.RIGHT)
+        sizer.Add(self.choice1, pos=(0, 1), span=(1, 1), flag=wx.RIGHT)
 
         self.inputL2 = wx.StaticText(self.panel, label=_("Planet"))
-        sizer.Add(self.inputL2, pos=(1, 2), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.inputL2, pos=(0, 2), span=(1, 1), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.choice2 = wx.Choice(self.panel, choices=self.choice2Items[choice1Items[0]])
-        sizer.Add(self.choice2, pos=(1, 3), span=(1, 2), flag=wx.EXPAND)
+        self.choice2.SetMinSize((120, -1))
+        sizer.Add(self.choice2, pos=(0, 3), span=(1, 1), flag=wx.RIGHT)
         self.choice2.Enable(False)
 
         self.inputLabel = wx.StaticText(self.panel,label=_("----------------Please Enter Orbit Parameters----------------"))
-        sizer.Add(self.inputLabel, pos=(2, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.inputLabel, pos=(1, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
 
         self.input1Label = wx.StaticText(self.panel, label=_("Altitude(m)"))
-        sizer.Add(self.input1Label, pos=(4, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.input1Label, pos=(3, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.input1 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input1, pos=(4, 2), span=(1, 2), flag=wx.EXPAND)
+        sizer.Add(self.input1, pos=(3, 2), span=(1, 2), flag=wx.EXPAND)
 
         self.input2Label = wx.StaticText(self.panel, label=_("Eccentricity"))
-        sizer.Add(self.input2Label, pos=(5, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.input2Label, pos=(4, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.input2 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input2, pos=(5, 2), span=(1, 2), flag=wx.EXPAND)
+        sizer.Add(self.input2, pos=(4, 2), span=(1, 2), flag=wx.EXPAND)
 
         self.input3Label = wx.StaticText(self.panel, label=_("j2"))
-        sizer.Add(self.input3Label, pos=(6, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.input3Label, pos=(5, 0), span=(1, 2), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.input3 = wx.TextCtrl(self.panel)
-        sizer.Add(self.input3, pos=(6, 2), span=(1, 2), flag=wx.EXPAND)
+        sizer.Add(self.input3, pos=(5, 2), span=(1, 2), flag=wx.EXPAND)
 
         hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.calcButton = wx.Button(self.panel, label=_("Calculate"))
@@ -90,33 +119,29 @@ class SunSyncOrbitCalculator(wx.Frame):
         self.ClearButton.Enable(False)
 
 
-        sizer.Add(hbox, pos=(7, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(hbox, pos=(6, 0), span=(2, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
         self.GenerateButton.Enable(False)
 
 
         self.outputLabel = wx.StaticText(self.panel, label=_("Calculation Result"))
-        sizer.Add(self.outputLabel, pos=(9, 0), span=(1, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(self.outputLabel, pos=(8, 0), span=(1, 4), flag=wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_CENTER_HORIZONTAL)
 
         self.outputText = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE)
-        sizer.Add(self.outputText, pos=(10, 0), span=(9, 4), flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP)
-
-        self.panel.SetSizer(sizer)  # Set the sizer to the panel
-
-    def OnLanguageChoice(self, e):
-        global current_language
-        languages = [wx.LANGUAGE_ENGLISH, wx.LANGUAGE_CHINESE_SIMPLIFIED]
-        current_language = languages[self.languageChoice.GetSelection()]
-        self.locale = wx.Locale(current_language)
-        self.locale.AddCatalogLookupPathPrefix('language')
-
-        if current_language == wx.LANGUAGE_ENGLISH:
-            self.locale.AddCatalog('en')
-            self.languageChoice.Enable(False)
-        elif current_language == wx.LANGUAGE_CHINESE_SIMPLIFIED:
-            self.locale.AddCatalog('zh_CN')
-            self.languageChoice.Enable(False)
+        sizer.Add(self.outputText, pos=(9, 0), span=(10, 4), flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP)
 
         self.UpdateUI()
+        self.panel.SetSizer(sizer)  # Set the sizer to the panel
+
+    # def OnLanguageChoice(self, e):
+    #     system_language = wx.Locale(wx.LANGUAGE_DEFAULT).GetCanonicalName()
+    #     if system_language == "zh_CN":
+    #         self.languageChoice.SetSelection(1)
+    #         self.OnLanguageChoice(None)
+    #     else:
+    #         self.languageChoice.SetSelection(0)
+    #         self.OnLanguageChoice(None)
+    #
+    #     self.UpdateUI()
 
     def UpdateUI(self):
 
