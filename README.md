@@ -2,7 +2,7 @@
 
 
 [English](https://github.com/Aebestach/SSOCalculator.Stock_RSS_Principia/blob/main/README.md) | [简体中文](https://www.bilibili.com/read/cv25055752)
-<div align=center> <img src="https://imgur.com/Kp0oF8q.jpg"><p>Initial Page</p></div>
+<div align=center> <img src="https://imgur.com/zc3Ctov.jpg"><p>Initial Page</p></div>
 
 
 ## Introduce
@@ -19,17 +19,16 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 ## Tutorial
 
 1. Open `SSOCalculator.exe`
-2. Choose the language option you need. (Tips: can only be selected once)
-3. First select the `System`, then select the corresponding `Planet`.
-	* If you choose **RealSolarSystem**, then you only need to enter the `Altitude(m)` (excluding the planet radius) and `Eccentricity`, and click **Calculate** to get the **Satellite Orbital Parameters** want. (`SMA` = Semi-major Axis)<div align=center><img src="https://imgur.com/FGgMNT3.jpg"><p>Example of Earth’s sun-synchronous orbit</p></div>
+2. First select the `System`, then select the corresponding `Planet`.
+	* If you choose **RealSolarSystem**, then you only need to enter the `Altitude` (excluding the planet radius) and `Eccentricity`, and click **Calculate** to get the **Satellite Orbital Parameters** want. (`SMA` = Semi-major Axis)<div align=center><img src="https://imgur.com/s9r5P5J.jpg"><p>Example of Earth’s sun-synchronous orbit</p></div>
 
-	* If you choose **Stock**, then you need to enter the `Altitude(m)` (excluding the planet radius) and `Eccentricity`, and `j2`. <br>***( Note: The j2 term can refer to the j2 parameter of a planet similar to your choice in [sol_gravity_model.proto.txt](https://github.com/mockingbirdnest/Principia/blob/2018011702-Clifford/astronomy/sol_gravity_model.proto.txt).)***<br>After clicking **Calculate**, you will get the **Satellite Orbital Parameters** want. (`SMA` = Semi-major Axis)<div align=center><img src="https://imgur.com/kKa4iAS.jpg"><p>Example of Earth’s sun-synchronous orbit</p></div>
+	* If you choose **Stock**, then you need to enter the `Altitude` (excluding the planet radius) and `Eccentricity`, and `j2`. <br>***( Note: The j2 term can refer to the j2 parameter of a planet similar to your choice in [sol_gravity_model.proto.txt](https://github.com/mockingbirdnest/Principia/blob/2018011702-Clifford/astronomy/sol_gravity_model.proto.txt).)***<br>After clicking **Calculate**, you will get the **Satellite Orbital Parameters** want. (`SMA` = Semi-major Axis)<div align=center><img src="https://imgur.com/KoXC6aH.jpg"><p>Example of Earth’s sun-synchronous orbit</p></div>
 
 4. In the **Stock** environment, once the orbit parameters are correctly generated, you will find that the **Generate Configuration File** button is enabled. Next, you only need to click it to generate the `StockPlanet_GravityModels.cfg` file. Then put it anywhere in **GameData**.<br>***(Note:The generated file is in the current directory.)***
-<div align=center><img src="https://imgur.com/1A2FlWn.jpg"><p>Configuration generation successful case</p></div>
+<div align=center><img src="https://imgur.com/zG53Hp0.jpg"><p>Configuration generation successful case</p></div>
 <div align=center><img src="https://imgur.com/4LWTmG9.jpg"><p>GameData content</p></div>
 
-5. The **Clear** button is for one-click clearing of the `Altitude(m)`, `Eccentricity`, and `j2` parameters.
+5. The **Clear** button is for one-click clearing of the `Altitude`, `Eccentricity`, and `j2` parameters.
 
 
 ## To-Do List
@@ -46,4 +45,6 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 <br>[@Nazfib](https://github.com/Nazfib)      Code help for calculating sun-synchronous orbit inclination and other formulas.
 <br>[@Charon_S丶](https://space.bilibili.com/347787037/?spm_id_from=333.999.0.0)      KSP players have provided help for adding second-order spherical harmonic coefficient terms.
 <br>[@PrincipiaTeam](https://github.com/mockingbirdnest/Principia)      Provide file support for planetary data in the RSS environment.
-<br>NewBing     The planetary rotation period under RSS is provided.
+<br>[@tinygrox](https://github.com/tinygrox)     Thank you for his suggestions on language and unit options.
+<br>[NewBing](www.bing.com)     The planetary rotation period under RSS is provided.
+
