@@ -24,11 +24,11 @@ In the Kerbal Space Program, planets are regular spheres. After adding [Principi
 
 	* If you choose **Stock**, then you need to enter the `Altitude` (excluding the planet radius) and `Eccentricity`, and `j2`. <br>***( Note: The j2 term can refer to the j2 parameter of a planet similar to your choice in [sol_gravity_model.proto.txt](https://github.com/mockingbirdnest/Principia/blob/2018011702-Clifford/astronomy/sol_gravity_model.proto.txt).)***<br>After clicking **Calculate**, you will get the **Satellite Orbital Parameters** want. (`SMA` = Semi-major Axis)<div align=center><img src="https://imgur.com/KoXC6aH.jpg"><p>Example of Earth’s sun-synchronous orbit</p></div>
 
-4. In the **Stock** environment, once the orbit parameters are correctly generated, you will find that the **Generate Configuration File** button is enabled. Next, you only need to click it to generate the `StockPlanet_GravityModels.cfg` file. Then put it anywhere in **GameData**.<br>***(Note:The generated file is in the current directory.)***
+3. In the **Stock** environment, once the orbit parameters are correctly generated, you will find that the **Generate Configuration File** button is enabled. Next, you only need to click it to generate the `StockPlanet_GravityModels.cfg` file. Then put it anywhere in **GameData**.<br>***(Note:The generated file is in the current directory.)***
 <div align=center><img src="https://imgur.com/zG53Hp0.jpg"><p>Configuration generation successful case</p></div>
 <div align=center><img src="https://imgur.com/4LWTmG9.jpg"><p>GameData content</p></div>
 
-5. The **Clear** button is for one-click clearing of the `Altitude`, `Eccentricity`, and `j2` parameters.
+4. The **Clear** button is for one-click clearing of the `Altitude`, `Eccentricity`, and `j2` parameters.
 
 
 ## To-Do List
