@@ -1,4 +1,4 @@
-# SSOCalculator.Stock_RSS_Principia
+# Principia:SSO Calculator(Stock,RSS)
 
 
 [English](https://github.com/Aebestach/SSOCalculator.Stock_RSS_Principia/blob/main/README.md) | [简体中文](https://www.bilibili.com/read/cv25055752)
