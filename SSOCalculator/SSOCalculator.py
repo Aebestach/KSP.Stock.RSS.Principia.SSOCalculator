@@ -161,7 +161,7 @@ class SunSyncOrbitCalculator(wx.Frame):
             self.ClearButton.Enable(True)
         else:
             if flag==1:
-                input1=str(float(input1)*100)
+                input1=str(float(input1)*1000)
             # Display calculation results
             if choice1Selection == 'RealSolarSystem':
                 # Call the sun synchronous orbit calculation program
